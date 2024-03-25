@@ -151,7 +151,7 @@ def main():
 
     # write output files
     if args.out_h5 is None:
-        args.out_h5 = "./input.h5"
+        args.out_h5 = "./output.h5"
     if args.out_toml is None:
         args.out_toml = f"./topol.toml"
 
