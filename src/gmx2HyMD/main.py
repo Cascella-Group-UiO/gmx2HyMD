@@ -151,9 +151,9 @@ def main():
 
     # write output files
     if args.out_h5 is None:
-        args.out_h5 = base + ".h5"
+        args.out_h5 = "./input.h5"
     if args.out_toml is None:
-        args.out_toml = f"{os.path.dirname(os.path.abspath(args.top))}/topol.toml"
+        args.out_toml = f"./topol.toml"
 
     system = get_system_properties(molecule_list, topol)
     # properties = (n_mol, names, types, molecules, masses, charges)
