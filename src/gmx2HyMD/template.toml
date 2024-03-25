@@ -1,0 +1,36 @@
+[simulation]
+n_steps = 1000                    # Number of outer steps
+n_print = 1                       # Number of steps after which the positions are saved
+n_flush = 1                       # Number of prints after which the output file is saved
+time_step = 0.02                  # Inner loop timestep (for the fast forces)
+respa_inner = 10                  # Number of inner loop steps. Therefore the timestep for the outer loop is given by (time_step * respa_inner)
+cancel_com_momentum = true        # Whether to remove the center of mass momentum
+
+# electrostatics
+dielectric_const = 60.0
+coulombtype = 'PIC_Spectral'
+
+# temperature
+start_temperature = 323           # Initial temperature
+target_temperature = 323          # Thermostat target temperature
+tau = 0.1                         # Thermostat coupling constant
+thermostat_coupling_groups = []
+
+# pressure
+pressure = true                   # Whether pressure coupling is on 
+barostat_type = 'berendsen'       # Barostat type
+barostat = 'isotropic'            # Barostat coupling
+tau_p = 0.1                       # Barostat coupling constant
+target_pressure = 1               # Barostat target pressure
+# barostat = 'berendsen'          # In Diff-HyMD, these two options are reversed
+# barostat_type = 'isotropic'     # 
+
+[field]
+mesh_size = [20, 20, 20]          # FFT mesh grid. Only use even numbers with Diff-HyMD!
+kappa = 0.05                      # Compressibilty
+sigma = 0.5                       # Particle spread
+rho0 = 8.86                       # Particle 'volume'. Optimized value for NPT
+a = 9.21                          # Free parameter to fit water density. Optimized value for NPT
+chi = [                           # Type-type interation matrix
+    # ['A','A', 0.0] => No need to specify self-interactions, assumed to be 0.0
+]

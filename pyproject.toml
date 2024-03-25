@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+editable_mode = true
+
+[project]
+name = "gmx2HyMD"
+version = "1.0.0"
+authors = [
+  { name="Manuel Carrer", email="manuel.carrer@kjemi.uio.no" },
+  { name="Xinmeng Li", email="xinmeng.li@kjemi.uio.no" },
+]
+description = "Topology manipulation utilties for HyMD"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+  "h5py", 
+  "numpy", 
+  "parse", 
+  "tomlkit"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+gmx2HyMD = ["*.toml"]
+
+[project.scripts]
+gmx2hymd = "gmx2HyMD.main:main"
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+]
+
